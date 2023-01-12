@@ -7,11 +7,11 @@
 
     <fragment
         android:id="@+id/mainFragment"
-        android:name="com.redgunner.worddroid.view.fragment.MainFragment"
+        android:name="com.redgunner.droidsoft.view.fragment.MainFragment"
         android:label="MainFragment" />
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.redgunner.worddroid.view.fragment.DetailFragment"
+        android:name="com.redgunner.droidsoft.view.fragment.DetailFragment"
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
         <argument
@@ -27,7 +27,7 @@
         app:destination="@id/detailFragment" />
     <fragment
         android:id="@+id/commentsFragment"
-        android:name="com.redgunner.worddroid.view.fragment.CommentsFragment"
+        android:name="com.redgunner.droidsoft.view.fragment.CommentsFragment"
         android:label="fragment_comments"
         tools:layout="@layout/fragment_comments">
         <argument
