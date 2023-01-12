@@ -10,12 +10,14 @@
     <color name="gray">#e2e2e2</color>
 
 
-    <color name="StatusBarColor">#fffafafa</color>
+    <color name="StatusBarColor">#EAFEF2</color>
+
+    <color name="NavBarColor">#B8FDCC</color>
 
     <color name="headlinesText">@color/black</color>
 
-    <color name="tabLayoutSelectedColor">#121212</color>
-    <color name="tabLayoutIndicatorColor">#121212</color>
+    <color name="tabLayoutSelectedColor">#30AC6E</color>
+    <color name="tabLayoutIndicatorColor">#30AC6E</color>
 
 
 </resources>
