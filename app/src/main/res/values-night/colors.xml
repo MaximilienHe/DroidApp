@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="StatusBarColor">#121212</color>
+    <color name="StatusBarColor">#0A6533</color>
+
+    <color name="NavBarColor">#10964A</color>
 
     <color name="headlinesText">@color/white</color>
 
-    <color name="tabLayoutSelectedColor">#DC143C</color>
-    <color name="tabLayoutIndicatorColor">#DC143C</color>
+    <color name="tabLayoutSelectedColor">#B8FEC8</color>
+    <color name="tabLayoutIndicatorColor">#B5FDC8</color>
 
 </resources>
