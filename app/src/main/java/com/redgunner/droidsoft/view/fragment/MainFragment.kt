@@ -140,7 +140,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun setUpRecyclerView() {
-        if (postAdapter.)
         HomePostList.apply {
 
             this.adapter = postAdapter.withLoadStateFooter(PostLoadStateAdapter())
