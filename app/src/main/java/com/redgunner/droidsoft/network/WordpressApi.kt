@@ -16,7 +16,7 @@ interface WordpressApi {
     }
 
 
-    @GET("/wp-json/wp/v2/posts")
+    @GET("/wp-json/wp/v2/posts?per_page=10")
     suspend fun getPostsByCategories(
         @Query("categories") categories: Int,
         @Query("page") page: Int,

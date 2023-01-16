@@ -1,7 +1,10 @@
 package com.redgunner.droidsoft.view.fragment
 
+import android.util.Log
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -137,7 +140,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun setUpRecyclerView() {
+        if (postAdapter.)
         HomePostList.apply {
+
             this.adapter = postAdapter.withLoadStateFooter(PostLoadStateAdapter())
         }
     }
@@ -145,9 +150,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun setUpCategoriesTabLayout(categories: List<Categories>) {
 
         for (category in categories) {
-            val tab = tabLayout.newTab()
-            tab.text = category.name
-            tabLayout.addTab(tab)
+            //Log.d("tag", category.name)
+            if (category.name == "Actualité" || category.name == "Dossier" || category.name == "Fiches Produits" || category.name == "Tests Android") {
+                val tab = tabLayout.newTab()
+                tab.text = category.name
+                tabLayout.addTab(tab)
+            }
+
         }
 
 
