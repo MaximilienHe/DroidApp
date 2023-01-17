@@ -33,6 +33,18 @@ class PostListAdapter(val postClick: (postId: Int) -> Unit) :
             image.setOnClickListener {
                 getItem(adapterPosition)?.let { it1 -> postClick(it1.id) }
             }
+
+            title.setOnClickListener {
+                getItem(adapterPosition)?.let { it1 -> postClick(it1.id) }
+            }
+
+            category.setOnClickListener {
+                getItem(adapterPosition)?.let { it1 -> postClick(it1.id) }
+            }
+
+            time.setOnClickListener {
+                getItem(adapterPosition)?.let { it1 -> postClick(it1.id) }
+            }
         }
 
 
@@ -56,7 +68,7 @@ class PostListAdapter(val postClick: (postId: Int) -> Unit) :
 
             time.text = SimpleDateFormat("yyyy-MM-dd").parse(post.date).toString()
 
-
+            // Log.
         }
 
 
