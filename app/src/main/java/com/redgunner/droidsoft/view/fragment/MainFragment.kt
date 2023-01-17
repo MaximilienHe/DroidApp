@@ -1,7 +1,10 @@
 package com.redgunner.droidsoft.view.fragment
 
+import android.util.Log
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -138,6 +141,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun setUpRecyclerView() {
         HomePostList.apply {
+
             this.adapter = postAdapter.withLoadStateFooter(PostLoadStateAdapter())
         }
     }
