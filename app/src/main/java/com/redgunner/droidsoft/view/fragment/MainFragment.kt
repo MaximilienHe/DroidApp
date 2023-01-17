@@ -145,13 +145,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     private fun setUpCategoriesTabLayout(categories: List<Categories>) {
 
         for (category in categories) {
-            val tab = tabLayout.newTab()
-            tab.text = category.name
-            tabLayout.addTab(tab)
+            tabLayout.addTab(tabLayout.newTab().setText(category.name))
         }
-
-
     }
-
-
 }

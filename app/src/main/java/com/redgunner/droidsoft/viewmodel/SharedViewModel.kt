@@ -63,7 +63,10 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
         viewModelScope.launch {
 
             try {
-                _categoryList.value = wordPressRepository.getCategories()
+                val filteredCategories = wordPressRepository.getCategories().filter { it.name.contains("Tests Android")
+                                                                                    || it.name.contains("Actualité")
+                                                                                    || it.name.contains("Dossier") }
+                _categoryList.value = filteredCategories
 
             } catch (exception: IOException) {
 
@@ -93,6 +96,8 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
                     _postState.value = PostState.Error(exception.message.toString())
 
                 }
+
+
 
             }
 
