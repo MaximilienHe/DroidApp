@@ -83,23 +83,6 @@
 
             <include layout="@layout/shimmer_post_view_holder" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/HomePostList"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-
-                android:layout_alignParentStart="true"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="@color/StatusBarColor"
-                android:fitsSystemWindows="true"
-                android:orientation="vertical"
-                android:visibility="invisible"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/post_view_holder_layout" />
-
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 
@@ -122,6 +105,28 @@
 
 
     </com.google.android.material.tabs.TabLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/HomePostList"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+
+        android:background="@color/StatusBarColor"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical"
+        android:visibility="invisible"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+        tools:listitem="@layout/post_view_holder_layout" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
