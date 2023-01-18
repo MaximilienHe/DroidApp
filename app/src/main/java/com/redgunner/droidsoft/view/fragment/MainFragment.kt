@@ -24,6 +24,8 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.view.GestureDetector
+import android.view.MotionEvent
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
@@ -106,7 +108,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
         }
 
-
     }
 
     override fun onStart() {
@@ -126,7 +127,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
 
                 HomePostList.scrollToPosition(0)
-
                 viewModel.getPostByCategory(tab!!.position)
                 viewModel.saveTabLayoutPosition(tab.position)
             }
@@ -148,6 +148,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
     private fun setUpCategoriesTabLayout(categories: List<Categories>) {
+
+        tabLayout.addTab(tabLayout.newTab().setText("Dernières News"))
 
         for (category in categories) {
             val tab = tabLayout.newTab()

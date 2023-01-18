@@ -34,13 +34,19 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
 
     val posts = currentCategoryPosition.switchMap { categoryId ->
 
-        if (categories.value.isNotEmpty()) {
-            wordPressRepository.getPostByCategory(categories.value[categoryId].id)
+        if (categoryId == 0) {
+            wordPressRepository.getRecentPosts(10)
                 .cachedIn(viewModelScope)
-
         } else {
-            wordPressRepository.getPostByCategory(categoryId).cachedIn(viewModelScope)
 
+            if (categories.value.isNotEmpty()) {
+                wordPressRepository.getPostByCategory(categories.value[categoryId].id)
+                    .cachedIn(viewModelScope)
+
+            } else {
+                wordPressRepository.getPostByCategory(categoryId).cachedIn(viewModelScope)
+
+            }
         }
 
     }
@@ -56,7 +62,6 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
 
     private val _commentEventChannel = Channel<List<Comments>>()
     val comments = _commentEventChannel.receiveAsFlow()
-
 
     init {
 

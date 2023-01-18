@@ -24,6 +24,10 @@ interface WordpressApi {
         @Query("_embed") embed: Boolean
     ): List<Post>
 
+    @GET("/wp-json/wp/v2/posts?_embed=true")
+    suspend fun getRecentPosts(
+        @Query("per_page") nb: Int
+    ): List<Post>
 
     @GET("/wp-json/wp/v2/categories?per_page=50")
     suspend fun getCategories(): List<Categories>
