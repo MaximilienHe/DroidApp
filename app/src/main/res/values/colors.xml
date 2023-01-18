@@ -10,14 +10,17 @@
     <color name="gray">#e2e2e2</color>
 
 
-    <color name="StatusBarColor">#EAFEF2</color>
+    <color name="StatusBarColor">#FFF</color>
 
-    <color name="NavBarColor">#B8FDCC</color>
+    <color name="NavBarColor">#FFF</color>
 
     <color name="headlinesText">@color/black</color>
 
-    <color name="tabLayoutSelectedColor">#30AC6E</color>
-    <color name="tabLayoutIndicatorColor">#30AC6E</color>
-
+    <color name="tabLayoutSelectedColor">#000</color>
+    <color name="tabLayoutIndicatorColor">#000</color>
+    <color name="textColor">#000</color>
+    <color name="textCategory">#FFF</color>
+    <color name="greenAccentuation">#31ad6e</color>
+    <color name="separatorGreen">#31ad6e</color>
 
 </resources>
