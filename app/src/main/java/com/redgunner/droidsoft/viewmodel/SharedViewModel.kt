@@ -34,13 +34,19 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
 
     val posts = currentCategoryPosition.switchMap { categoryId ->
 
-        if (categories.value.isNotEmpty()) {
-            wordPressRepository.getPostByCategory(categories.value[categoryId].id)
+        if (categoryId == 0) {
+            wordPressRepository.getRecentPosts(10)
                 .cachedIn(viewModelScope)
-
         } else {
-            wordPressRepository.getPostByCategory(categoryId).cachedIn(viewModelScope)
 
+            if (categories.value.isNotEmpty()) {
+                wordPressRepository.getPostByCategory(categories.value[categoryId].id)
+                    .cachedIn(viewModelScope)
+
+            } else {
+                wordPressRepository.getPostByCategory(categoryId).cachedIn(viewModelScope)
+
+            }
         }
 
     }
@@ -57,13 +63,15 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
     private val _commentEventChannel = Channel<List<Comments>>()
     val comments = _commentEventChannel.receiveAsFlow()
 
-
     init {
 
         viewModelScope.launch {
 
             try {
-                _categoryList.value = wordPressRepository.getCategories()
+                val filteredCategories = wordPressRepository.getCategories().filter { it.name.contains("Tests Android")
+                                                                                    || it.name.contains("Actualité")
+                                                                                    || it.name.contains("Dossier") }
+                _categoryList.value = filteredCategories
 
             } catch (exception: IOException) {
 
@@ -93,6 +101,8 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
                     _postState.value = PostState.Error(exception.message.toString())
 
                 }
+
+
 
             }
 

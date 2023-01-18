@@ -1,7 +1,10 @@
 package com.redgunner.droidsoft.view.fragment
 
+import android.util.Log
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -19,7 +22,10 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.view.GestureDetector
+import android.view.MotionEvent
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
@@ -102,7 +108,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
         }
 
-
     }
 
     override fun onStart() {
@@ -122,7 +127,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
 
                 HomePostList.scrollToPosition(0)
-
                 viewModel.getPostByCategory(tab!!.position)
                 viewModel.saveTabLayoutPosition(tab.position)
             }
@@ -138,20 +142,42 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun setUpRecyclerView() {
         HomePostList.apply {
+
             this.adapter = postAdapter.withLoadStateFooter(PostLoadStateAdapter())
         }
     }
 
     private fun setUpCategoriesTabLayout(categories: List<Categories>) {
 
+        tabLayout.addTab(tabLayout.newTab().setText("Dernières News"))
+
         for (category in categories) {
             val tab = tabLayout.newTab()
             tab.text = category.name
+            when (tab.text) {
+                "Actualité" -> {
+                    tab.setIcon(R.drawable.ic_baseline_newspaper_24)
+                }
+                "Dossier" -> {
+                    tab.setIcon(R.drawable.ic_baseline_library_books_24)
+                }
+                "Tests Android" -> {
+                    tab.setIcon(R.drawable.ic_baseline_smartphone_24)
+                }
+            }
+
+            val colorStateList = ColorStateList(
+                arrayOf(intArrayOf(android.R.attr.state_selected), // selected
+                    intArrayOf(-android.R.attr.state_selected) // unselected
+                ),
+                intArrayOf(
+                    Color.BLACK, // selected
+                    Color.parseColor("#30ae6e") // unselected
+                )
+            )
+            tabLayout.setTabIconTint(colorStateList)
+
             tabLayout.addTab(tab)
         }
-
-
     }
-
-
 }
