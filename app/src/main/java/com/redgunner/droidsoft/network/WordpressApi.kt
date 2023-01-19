@@ -26,7 +26,8 @@ interface WordpressApi {
 
     @GET("/wp-json/wp/v2/posts?_embed=true")
     suspend fun getRecentPosts(
-        @Query("per_page") nb: Int
+        @Query("per_page") perPage: Int,
+        @Query("page") page: Int,
     ): List<Post>
 
     @GET("/wp-json/wp/v2/categories?per_page=50")

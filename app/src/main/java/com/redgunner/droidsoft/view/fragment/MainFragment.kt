@@ -114,6 +114,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onStart()
 
         tabLayout.setScrollPosition(viewModel.tabLayoutPosition, 0f, false)
+
     }
 
 
