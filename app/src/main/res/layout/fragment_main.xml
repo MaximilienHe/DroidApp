@@ -7,6 +7,47 @@
     tools:context=".view.MainActivity"
     android:background="@color/StatusBarColor">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/NavBarColor"
+            android:minHeight="?attr/actionBarSize"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text = "DroidSoft"
+                android:fontFamily="@font/productsansbold"
+                android:textSize="@android:dimen/app_icon_size"
+                android:textColor="@color/textColor"
+                />
+
+            <ImageButton
+                android:id="@+id/search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_search"
+                android:background="@color/NavBarColor"
+                />
+            <ImageButton
+                android:id="@+id/themeSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_moon"
+                android:background="@color/NavBarColor" />
+        </androidx.appcompat.widget.Toolbar>
+
+
+    </com.google.android.material.appbar.AppBarLayout>
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/tablayout_shimmer_view_container"
         android:layout_width="0dp"
