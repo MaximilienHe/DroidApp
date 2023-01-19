@@ -29,21 +29,24 @@
                 android:fontFamily="@font/productsansbold"
                 android:textSize="@android:dimen/app_icon_size"
                 android:textColor="@color/textColor"
-                />
-
-            <ImageButton
-                android:id="@+id/search_button"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_search"
-                android:background="@color/NavBarColor"
+                android:layout_marginStart="-18dp"
                 />
             <ImageButton
                 android:id="@+id/themeSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:layout_gravity="end"
                 android:src="@drawable/ic_moon"
                 android:background="@color/NavBarColor" />
+            <ImageButton
+                android:id="@+id/search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:src="@drawable/ic_search"
+                android:background="@color/NavBarColor"
+                />
+
         </androidx.appcompat.widget.Toolbar>
 
 
