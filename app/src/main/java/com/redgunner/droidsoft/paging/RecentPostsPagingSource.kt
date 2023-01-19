@@ -18,12 +18,14 @@ class RecentPostsPagingSource(
             val position = params.key ?: 1
 
             val posts = wordpressApi.getRecentPosts(
-                nb = nb
+                page = position,
+                perPage = 10,
+                //nb = nb
             )
 
             LoadResult.Page(
                 data = posts,
-                prevKey = null,
+                prevKey = if (position == WORDPRESS_STARTING_PAGE_INDEX) null else position - 1,
                 nextKey = if (posts.isEmpty()) null else position + 1
             )
 

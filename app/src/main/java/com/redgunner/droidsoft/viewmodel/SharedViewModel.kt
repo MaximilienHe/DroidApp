@@ -110,6 +110,10 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
 
     }
 
+    /*fun getRecentPosts(nb: Int) {
+        wordPressRepository.getRecentPosts(nb)
+            .cachedIn(viewModelScope)
+    }*/
 
     fun getPostByCategory(categoryPosition: Int) {
 
