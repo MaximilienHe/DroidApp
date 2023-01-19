@@ -4,14 +4,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity"
-    android:background="@color/StatusBarColor">
+    android:background="@color/NavBarColor"
+    android:visibility="visible"
+    tools:context=".view.MainActivity">
 
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBarLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/NavBarColor"
+        android:elevation="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/list_shimmer_view_container"
+        app:layout_constraintEnd_toEndOf="@+id/list_shimmer_view_container"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,45 +24,48 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/NavBarColor"
+            android:elevation="0dp"
             android:minHeight="?attr/actionBarSize"
-            >
+            app:subtitleTextColor="@color/white">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:text = "DroidSoft"
                 android:fontFamily="@font/productsansbold"
-                android:textSize="@android:dimen/app_icon_size"
+                android:text="DroidSoft"
                 android:textColor="@color/textColor"
-                android:layout_marginStart="-18dp"
-                />
+                android:textSize="@android:dimen/app_icon_size" />
+
             <ImageButton
                 android:id="@+id/themeSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
-                android:src="@drawable/ic_moon"
-                android:background="@color/NavBarColor" />
+                android:layout_marginEnd="18dp"
+                android:background="@color/NavBarColor"
+                android:src="@drawable/ic_moon" />
+
             <ImageButton
                 android:id="@+id/search_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
-                android:src="@drawable/ic_search"
                 android:background="@color/NavBarColor"
-                />
+                android:src="@drawable/ic_search" />
 
         </androidx.appcompat.widget.Toolbar>
 
 
     </com.google.android.material.appbar.AppBarLayout>
+
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/tablayout_shimmer_view_container"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        android:visibility="visible"
         android:background="@color/NavBarColor"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="@+id/tabLayout"
         app:layout_constraintEnd_toEndOf="@+id/tabLayout"
         app:layout_constraintStart_toStartOf="parent"
@@ -101,12 +108,13 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:visibility="visible"
         android:background="@color/StatusBarColor"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
+        android:elevation="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/tabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/tabLayout">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2">
 
         <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
@@ -138,14 +146,14 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/NavBarColor"
         android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:tabIndicatorColor="@color/tabLayoutIndicatorColor"
         app:tabMode="auto"
-        app:tabSelectedTextColor="@color/tabLayoutSelectedColor"
-        android:background="@color/NavBarColor">
+        app:tabSelectedTextColor="@color/tabLayoutSelectedColor">
 
 
     </com.google.android.material.tabs.TabLayout>
@@ -156,20 +164,20 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
 
-        android:background="@color/StatusBarColor"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:background="@color/StatusBarColor"
         android:fitsSystemWindows="true"
         android:orientation="vertical"
         android:visibility="invisible"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
+        app:layout_constraintBottom_toTopOf="@+id/tabLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
         tools:listitem="@layout/post_view_holder_layout" />
 
 
