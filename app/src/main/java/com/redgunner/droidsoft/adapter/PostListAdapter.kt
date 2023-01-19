@@ -68,7 +68,6 @@ class PostListAdapter(val postClick: (postId: Int) -> Unit) :
             category.text = post._embedded.wp_Term[0][0].name
 
             val sdFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(post.date).toString()
-            Log.d("TAG",sdFormat)
 
             val heure = sdFormat[11] + "" + sdFormat[12] + "h" + sdFormat[14] + "" + sdFormat[15]
 
