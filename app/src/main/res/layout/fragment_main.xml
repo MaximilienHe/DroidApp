@@ -42,7 +42,9 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
                 android:layout_marginEnd="18dp"
+                app:tint="@color/textColor"
                 android:background="@color/NavBarColor"
+
                 android:src="@drawable/ic_moon" />
 
             <ImageButton
@@ -50,6 +52,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
+                app:tint="@color/textColor"
                 android:background="@color/NavBarColor"
                 android:src="@drawable/ic_search" />
 
