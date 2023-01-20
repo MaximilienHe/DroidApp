@@ -17,7 +17,8 @@
         app:layout_constraintBottom_toTopOf="@+id/list_shimmer_view_container"
         app:layout_constraintEnd_toEndOf="@+id/list_shimmer_view_container"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -42,19 +43,19 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
                 android:layout_marginEnd="18dp"
-                app:tint="@color/textColor"
                 android:background="@color/NavBarColor"
+                android:src="@drawable/ic_moon"
 
-                android:src="@drawable/ic_moon" />
+                app:tint="@color/textColor" />
 
             <ImageButton
                 android:id="@+id/search_button"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="end"
-                app:tint="@color/textColor"
                 android:background="@color/NavBarColor"
-                android:src="@drawable/ic_search" />
+                android:src="@drawable/ic_search"
+                app:tint="@color/textColor" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -109,7 +110,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="@color/StatusBarColor"
         android:elevation="0dp"
@@ -170,7 +171,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
         android:background="@color/StatusBarColor"
         android:fitsSystemWindows="true"
