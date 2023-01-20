@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.redgunner.droidsoft.R
 import com.redgunner.droidsoft.models.post.Post
-import kotlinx.android.synthetic.main.post_view_holder_layout.view.*
+import kotlinx.android.synthetic.main.big_post_view_holder_layout.view.*
 import java.text.SimpleDateFormat
 import kotlin.time.hours
 
@@ -151,7 +151,7 @@ class PostListAdapter(val postClick: (postId: Int) -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.post_view_holder_layout, parent, false)
+            .inflate(R.layout.big_post_view_holder_layout, parent, false)
         return PostViewHolder(view, parent.context)
     }
 
