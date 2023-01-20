@@ -89,7 +89,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:fontFamily="@font/mabry_pro_bold"
+                        android:fontFamily="@font/productsansbold"
                         android:textColor="@color/headlinesText"
 
                         android:textSize="19sp"
@@ -103,7 +103,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
-                        android:fontFamily="@font/mabry_pro_medium"
+                        android:fontFamily="@font/productsansregular"
                         android:textSize="16sp"
                         app:layout_constraintEnd_toEndOf="@+id/postTitle"
                         app:layout_constraintHorizontal_bias="0.0"
