@@ -26,6 +26,8 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.widget.TextView
+
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
@@ -108,6 +110,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
         }
 
+        val droidsoftTextView = view.findViewById<TextView>(R.id.droidsoftText)
+        droidsoftTextView.setOnClickListener { lastNews(view) }
+
     }
 
     override fun onStart() {
@@ -150,7 +155,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun setUpCategoriesTabLayout(categories: List<Categories>) {
 
-        tabLayout.addTab(tabLayout.newTab().setText("Dernières News"))
+        //tabLayout.addTab(tabLayout.newTab().setText("Dernières News"))
 
         for (category in categories) {
             val tab = tabLayout.newTab()
@@ -180,5 +185,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
             tabLayout.addTab(tab)
         }
+    }
+    private fun lastNews(view: View) {
+        Log.d("TAG", "lastNews: ")
+        viewModel.getRecentPosts(10)
     }
 }
