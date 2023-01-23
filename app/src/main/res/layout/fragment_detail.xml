@@ -77,38 +77,51 @@
                             android:id="@+id/postImage"
                             android:layout_width="match_parent"
                             android:layout_height="260dp"
-                            android:scaleType="fitXY"
-
+                            android:scaleType="centerCrop"
                             tools:src="@tools:sample/backgrounds/scenic" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gradient_shape" />
+
+                        <TextView
+                            android:id="@+id/postTitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="bottom"
+                            android:layout_marginStart="12dp"
+                            android:layout_marginEnd="12dp"
+                            android:layout_marginBottom="16dp"
+                            android:ellipsize="end"
+                            android:fontFamily="@font/trebuchet"
+                            android:textAlignment="textStart"
+                            android:textColor="#FFFFFFFF"
+                            android:textSize="24sp"
+                            android:textStyle="bold"
+                            tools:text="this is match to do how" />
 
 
                     </androidx.cardview.widget.CardView>
 
                     <TextView
-                        android:id="@+id/postTitle"
-                        android:layout_width="0dp"
+                        android:id="@+id/postCategory"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
+                        android:background="@color/greenAccentuation"
                         android:fontFamily="@font/productsansbold"
-                        android:textColor="@color/headlinesText"
-
-                        android:textSize="19sp"
+                        android:paddingLeft="4dp"
+                        android:paddingTop="1dp"
+                        android:paddingRight="4dp"
+                        android:paddingBottom="1dp"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="@+id/cardView2"
+                        app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintStart_toStartOf="@+id/cardView2"
                         app:layout_constraintTop_toBottomOf="@+id/cardView2"
-                        tools:text="this is match to do how" />
-
-                    <TextView
-                        android:id="@+id/postCategory"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/productsansregular"
-                        android:textSize="16sp"
-                        app:layout_constraintEnd_toEndOf="@+id/postTitle"
-                        app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toStartOf="@+id/postTitle"
-                        app:layout_constraintTop_toBottomOf="@+id/postTitle"
+                        tools:ignore="TextContrastCheck"
                         tools:text="sport" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -131,12 +144,16 @@
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:fontFamily="@font/productsansregular"
+                android:textColor="@color/textColor">
 
 
                 <WebView
                     android:id="@+id/postWebView"
+                    android:fontFamily="@font/productsansregular"
                     android:layout_width="wrap_content"
+                    android:textColor="@color/textColor"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -150,7 +167,9 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="16dp"
                     android:layout_marginEnd="8dp"
-                    android:text="Montrer Tout Les Commentaires"
+                    android:fontFamily="@font/productsansbold"
+                    android:text="Montrer tous les commentaires"
+                    android:textColor="@color/textColor"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/postWebView" />

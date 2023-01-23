@@ -4,10 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginLeft="32dp"
-    android:layout_marginRight="32dp"
-    android:layout_marginBottom="32dp"
-    >
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:layout_marginBottom="32dp">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -36,7 +35,7 @@
         android:layout_marginStart="24dp"
         android:ellipsize="end"
         android:fontFamily="@font/trebuchet"
-        android:maxLines="3"
+        android:maxLines="4"
         android:textColor="@color/headlinesText"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -86,13 +85,13 @@
         android:layout_marginStart="4dp"
         android:fontFamily="@font/montserrat"
         android:textAlignment="viewEnd"
-        android:textColor="@color/black"
+        android:textColor="@color/textColor"
         android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/postCategory"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/postCategory"
-        app:layout_constraintTop_toBottomOf="@+id/PostTitle"
+        app:layout_constraintTop_toTopOf="@+id/postCategory"
         app:layout_constraintVertical_bias="0.45"
         tools:text="2 Mars" />
 
