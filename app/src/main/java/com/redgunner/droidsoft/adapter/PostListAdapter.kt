@@ -71,7 +71,7 @@ class PostListAdapter(val postClick: (postId: Int) -> Unit) :
 
             val heure = sdFormat[11] + "" + sdFormat[12] + "h" + sdFormat[14] + "" + sdFormat[15]
 
-            val date =sdFormat[8] + "" + sdFormat[9] + "/" + getMonth(sdFormat[4] +""+ sdFormat[5] + sdFormat[6]) + "/" + sdFormat[30] + sdFormat[31] + sdFormat[32] + sdFormat[33]
+            val date =sdFormat[8] + "" + sdFormat[9] + "/" + getMonth(sdFormat[4] +""+ sdFormat[5] + sdFormat[6]) + "/" + sdFormat[32] + sdFormat[33]
 
             val heureDate = heure + " " + date
 
@@ -151,7 +151,7 @@ class PostListAdapter(val postClick: (postId: Int) -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.big_post_view_holder_layout, parent, false)
+            .inflate(R.layout.post_view_holder_layout, parent, false)
         return PostViewHolder(view, parent.context)
     }
 
