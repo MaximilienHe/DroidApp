@@ -26,6 +26,8 @@ import android.content.res.ColorStateList
 import android.graphics.Color
 import android.view.GestureDetector
 import android.view.MotionEvent
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatDelegate
 
@@ -180,12 +182,14 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 }
             }
 
+            var blackOrWhite = ResourcesCompat.getColor(getResources(), R.color.textColor, null); //without theme;
+
             val colorStateList = ColorStateList(
                 arrayOf(intArrayOf(android.R.attr.state_selected), // selected
                     intArrayOf(-android.R.attr.state_selected) // unselected
                 ),
                 intArrayOf(
-                    Color.BLACK, // selected
+                    blackOrWhite, // selected
                     Color.parseColor("#30ae6e") // unselected
                 )
             )
