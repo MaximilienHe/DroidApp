@@ -176,12 +176,15 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             tab.text = category.name
             when (tab.text) {
                 "Actualité" -> {
+                    tab.text = "ACTUS"
                     tab.setIcon(R.drawable.ic_baseline_newspaper_24)
                 }
                 "Dossier" -> {
+                    tab.text = "DOSSIERS"
                     tab.setIcon(R.drawable.ic_baseline_library_books_24)
                 }
                 "Tests Android" -> {
+                    tab.text = "TESTS"
                     tab.setIcon(R.drawable.ic_baseline_smartphone_24)
                 }
             }
