@@ -29,7 +29,6 @@ import android.view.MotionEvent
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatDelegate
 
-
 class MainFragment : Fragment(R.layout.fragment_main) {
 
     private val viewModel: SharedViewModel by activityViewModels()
@@ -104,6 +103,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
             }
         }
+
         lifecycleScope.launchWhenStarted {
 
 
