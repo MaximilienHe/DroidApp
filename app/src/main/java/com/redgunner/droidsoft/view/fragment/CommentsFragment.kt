@@ -1,5 +1,6 @@
 package com.redgunner.droidsoft.view.fragment
 
+import android.util.Log
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -26,7 +27,6 @@ class CommentsFragment : Fragment(R.layout.fragment_comments) {
     override fun onStart() {
         super.onStart()
         setUpRecyclerView()
-
         viewModel.getPostComments(navArgs.postId)
 
     }
