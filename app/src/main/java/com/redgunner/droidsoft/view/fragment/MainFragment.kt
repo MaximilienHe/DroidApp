@@ -31,6 +31,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatDelegate
+import kotlinx.android.synthetic.main.big_post_view_holder_layout.view.*
+import kotlinx.android.synthetic.main.post_view_holder_layout.*
+import kotlinx.android.synthetic.main.post_view_holder_layout.view.*
+import kotlinx.android.synthetic.main.post_view_holder_layout.view.postCategory
+import retrofit2.http.DELETE
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
@@ -139,6 +144,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     override fun onResume() {
         super.onResume()
+
         tabLayout.getTabAt(viewModel.tabLayoutPosition)?.select()
         tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
 

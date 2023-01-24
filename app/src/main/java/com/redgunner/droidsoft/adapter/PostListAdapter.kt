@@ -8,13 +8,28 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import androidx.core.view.children
+import androidx.core.view.get
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.redgunner.droidsoft.R
 import com.redgunner.droidsoft.models.post.Post
+import com.redgunner.droidsoft.viewmodel.SharedViewModel
 import kotlinx.android.synthetic.main.big_post_view_holder_layout.view.*
+import kotlinx.android.synthetic.main.big_post_view_holder_layout.view.PostImage
+import kotlinx.android.synthetic.main.big_post_view_holder_layout.view.PostTime
+import kotlinx.android.synthetic.main.big_post_view_holder_layout.view.PostTitle
+import kotlinx.android.synthetic.main.big_post_view_holder_layout.view.postCategory
+import kotlinx.android.synthetic.main.fragment_main.view.*
+import kotlinx.android.synthetic.main.post_view_holder_layout.view.*
+import kotlinx.android.synthetic.main.shimmer_webview_content.view.*
+import org.w3c.dom.Text
 import java.text.SimpleDateFormat
 import kotlin.time.hours
 
@@ -29,6 +44,9 @@ class PostListAdapter(val postClick: (postId: Int) -> Unit) :
         private val title = itemView.PostTitle
         private val category = itemView.postCategory
         private val time = itemView.PostTime
+
+
+
 
         init {
 
@@ -65,7 +83,17 @@ class PostListAdapter(val postClick: (postId: Int) -> Unit) :
             title.text = Html.fromHtml(Html.fromHtml(post.title.rendered).toString())
 
 
+            Log.d("pos", itemView.tabLayout.toString())
+
             category.text = post._embedded.wp_Term[0][0].name
+
+            /*
+            else {
+                category.text = ""
+                category.setPadding(0,0,0,0)
+            }*/
+
+
 
             val sdFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(post.date).toString()
 
@@ -146,12 +174,12 @@ class PostListAdapter(val postClick: (postId: Int) -> Unit) :
         if (currentItem != null) {
             holder.bind(currentItem)
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.post_view_holder_layout, parent, false)
+
         return PostViewHolder(view, parent.context)
     }
 
