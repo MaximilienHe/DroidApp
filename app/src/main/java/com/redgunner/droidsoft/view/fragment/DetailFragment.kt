@@ -95,7 +95,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     private fun showPost(post: Post) {
 
-        val customFont = "file:///assets/productsansregular.ttf"
         val htmlContent =
             "<!DOCTYPE html> <html> <head> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n" +
                     "<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n" +
@@ -104,7 +103,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                     "\"",
                     ""
                 )
-            } <p>TA GUEULE</p> </body></html>"
+            } </body></html>"
 
         postWebView.loadDataWithBaseURL(
             null,
