@@ -23,7 +23,7 @@ class PostPagingSource(
             val posts = wordpressApi.getPostsByCategories(
                 categories = categoryId,
                 page = position,
-                perPage = params.loadSize,
+                perPage = 10,
                 embed = true
             )
 
