@@ -1,10 +1,8 @@
 package com.redgunner.droidsoft.view.fragment
 
 import android.util.Log
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -24,10 +22,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.view.GestureDetector
-import android.view.MotionEvent
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatDelegate
