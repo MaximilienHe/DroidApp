@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.redgunner.droidsoft.R
 import com.redgunner.droidsoft.models.comments.Comments
 import kotlinx.android.synthetic.main.comments_view_holder_layout.view.*
+import java.text.SimpleDateFormat
+
 
 class CommentsListAdapter :
     ListAdapter<Comments, CommentsListAdapter.CommentsViewHolder>(CommentsComparator()) {
@@ -38,10 +40,15 @@ class CommentsListAdapter :
         fun bind(comment: Comments) {
 
             author.text = comment.author_name
-            date.text = comment.date
-            content.text = Html.fromHtml(Html.fromHtml(comment.content).toString())
-
-
+            try {
+                val inputFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss")
+                val outputFormat = SimpleDateFormat("HH:mm, dd/MM/yy")
+                val inputDate = inputFormat.parse(comment.date)
+                date.text = outputFormat.format(inputDate)
+            } catch (e: Exception) {
+                date.text = comment.date
+            }
+            content.text = Html.fromHtml(Html.fromHtml(comment.content.rendered).toString())
         }
 
 
