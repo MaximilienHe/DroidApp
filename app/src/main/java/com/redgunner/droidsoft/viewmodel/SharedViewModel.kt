@@ -19,6 +19,7 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
+import com.google.gson.Gson
 
 @HiltViewModel
 class SharedViewModel @Inject constructor(private val wordPressRepository: WordPressRepository) :
@@ -34,7 +35,7 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
 
     val posts = currentCategoryPosition.switchMap { categoryId ->
 
-        if (categoryId == 0) {
+        if (categoryId == -1) {
             wordPressRepository.getRecentPosts(10)
                 .cachedIn(viewModelScope)
         } else {
@@ -110,10 +111,11 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
 
     }
 
-    /*fun getRecentPosts(nb: Int) {
-        wordPressRepository.getRecentPosts(nb)
-            .cachedIn(viewModelScope)
-    }*/
+    fun getRecentPosts(nb: Int) {
+        /*wordPressRepository.getRecentPosts(nb)
+            .cachedIn(viewModelScope)*/
+        currentCategoryPosition.value = -1
+    }
 
     fun getPostByCategory(categoryPosition: Int) {
 

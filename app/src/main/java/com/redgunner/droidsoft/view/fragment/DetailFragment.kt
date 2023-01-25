@@ -96,13 +96,14 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     private fun showPost(post: Post) {
 
         val htmlContent =
-            "<!DOCTYPE html> <html> <head> </head><meta name= viewport content= width=device-width  initial-scale=1.0 > <style>img{display: inline;height: auto;max-width: 100%;} video{display: inline;width: 100%;poster=} p{height: auto;width: 100%; } iframe{width: 100%} </style> <body>   ${
+            "<!DOCTYPE html> <html> <head> <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n" +
+                    "<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n" +
+                    "<link href=\"https://fonts.googleapis.com/css2?family=Montserrat&display=swap\" rel=\"stylesheet\"> </head><meta name= viewport content= width=device-width  initial-scale=1.0 > <style>* { font-family: 'Montserrat', sans-serif;" +" }img{display: inline;height: auto;max-width: 100%;} video{display: inline;width: 100%;poster=} p{height: auto;width: 100%; } iframe{width: 100%} </style> <body>   ${
                 post.content.rendered.replace(
                     "\"",
                     ""
                 )
             } </body></html>"
-
 
         postWebView.loadDataWithBaseURL(
             null,
@@ -111,7 +112,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
             "UTF-8",
             null
         )
-
 
 
         if (!post._embedded.wp_FeaturedMedia.isNullOrEmpty()) {

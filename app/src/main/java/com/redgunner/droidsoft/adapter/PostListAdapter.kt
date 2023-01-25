@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.redgunner.droidsoft.R
 import com.redgunner.droidsoft.models.post.Post
-import kotlinx.android.synthetic.main.post_view_holder_layout.view.*
+import kotlinx.android.synthetic.main.big_post_view_holder_layout.view.*
 import java.text.SimpleDateFormat
 import kotlin.time.hours
 
@@ -71,7 +71,7 @@ class PostListAdapter(val postClick: (postId: Int) -> Unit) :
 
             val heure = sdFormat[11] + "" + sdFormat[12] + "h" + sdFormat[14] + "" + sdFormat[15]
 
-            val date =sdFormat[8] + "" + sdFormat[9] + "/" + getMonth(sdFormat[4] +""+ sdFormat[5] + sdFormat[6]) + "/" + sdFormat[30] + sdFormat[31] + sdFormat[32] + sdFormat[33]
+            val date =sdFormat[8] + "" + sdFormat[9] + "/" + getMonth(sdFormat[4] +""+ sdFormat[5] + sdFormat[6]) + "/" + sdFormat[32] + sdFormat[33]
 
             val heureDate = heure + " " + date
 

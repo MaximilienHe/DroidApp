@@ -1,10 +1,9 @@
 package com.redgunner.droidsoft.view.fragment
 
+import android.content.SharedPreferences
 import android.util.Log
-import android.graphics.Bitmap
 import android.os.Bundle
 import android.view.View
-import android.widget.ImageView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -24,8 +23,10 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import android.content.res.ColorStateList
 import android.graphics.Color
-import android.view.GestureDetector
-import android.view.MotionEvent
+import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
+import android.widget.ImageButton
+import androidx.appcompat.app.AppCompatDelegate
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
@@ -90,6 +91,35 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         })
 
+        var mPreferences = activity?.getSharedPreferences("THEME", 0)
+        var themeBool = mPreferences?.getBoolean("themeBool", true)
+        if (themeBool == true) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+
+        val switchThm = view.findViewById<ImageButton>(R.id.themeSwitch)
+        switchThm.setOnClickListener {
+            if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                themeBool= themeBool?.not()
+            }
+            else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                themeBool = themeBool?.not()
+            }
+            mPreferences = activity?.getSharedPreferences("THEME", 0)
+            val mEditor = mPreferences?.edit()
+
+            if(themeBool == true) {
+                mEditor?.putBoolean("themeBool", true)?.commit()
+            }
+            else if (themeBool == false) {
+                mEditor?.putBoolean("themeBool", false)?.commit()
+            }
+        }
 
         lifecycleScope.launchWhenStarted {
 
@@ -107,6 +137,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
             }
         }
+
+        val droidsoftTextView = view.findViewById<TextView>(R.id.droidsoftText)
+        droidsoftTextView.setOnClickListener { lastNews(view) }
 
     }
 
@@ -150,29 +183,34 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun setUpCategoriesTabLayout(categories: List<Categories>) {
 
-        tabLayout.addTab(tabLayout.newTab().setText("Dernières News"))
+        //tabLayout.addTab(tabLayout.newTab().setText("Dernières News"))
 
         for (category in categories) {
             val tab = tabLayout.newTab()
             tab.text = category.name
             when (tab.text) {
                 "Actualité" -> {
+                    tab.text = "ACTUS"
                     tab.setIcon(R.drawable.ic_baseline_newspaper_24)
                 }
                 "Dossier" -> {
+                    tab.text = "DOSSIERS"
                     tab.setIcon(R.drawable.ic_baseline_library_books_24)
                 }
                 "Tests Android" -> {
+                    tab.text = "TESTS"
                     tab.setIcon(R.drawable.ic_baseline_smartphone_24)
                 }
             }
+
+            var blackOrWhite = ResourcesCompat.getColor(getResources(), R.color.textColor, null); //without theme;
 
             val colorStateList = ColorStateList(
                 arrayOf(intArrayOf(android.R.attr.state_selected), // selected
                     intArrayOf(-android.R.attr.state_selected) // unselected
                 ),
                 intArrayOf(
-                    Color.BLACK, // selected
+                    blackOrWhite, // selected
                     Color.parseColor("#30ae6e") // unselected
                 )
             )
@@ -180,5 +218,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
             tabLayout.addTab(tab)
         }
+    }
+    private fun lastNews(view: View) {
+        Log.d("TAG", "lastNews: ")
+        viewModel.getRecentPosts(10)
     }
 }
