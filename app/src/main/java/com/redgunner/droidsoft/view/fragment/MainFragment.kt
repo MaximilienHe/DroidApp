@@ -138,8 +138,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
         }
 
-        val droidsoftTextView = view.findViewById<TextView>(R.id.droidsoftText)
-        droidsoftTextView.setOnClickListener { lastNews(view) }
+        //val droidsoftTextView = view.findViewById<TextView>(R.id.droidsoftText)
+        //droidsoftTextView.setOnClickListener { lastNews(view) }
 
     }
 
@@ -183,9 +183,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun setUpCategoriesTabLayout(categories: List<Categories>) {
 
-        //tabLayout.addTab(tabLayout.newTab().setText("Dernières News"))
+        val lastNewsTab = tabLayout.newTab()
+        lastNewsTab.setText("ACTUS")
+        lastNewsTab.setIcon(R.drawable.ic_baseline_newspaper_24)
+        tabLayout.addTab(lastNewsTab)
 
         for (category in categories) {
+            Log.d("TAG", "setUpCategoriesTabLayout: $category")
             val tab = tabLayout.newTab()
             tab.text = category.name
             when (tab.text) {
@@ -219,8 +223,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             tabLayout.addTab(tab)
         }
     }
-    private fun lastNews(view: View) {
+    /*private fun lastNews(view: View) {
         Log.d("TAG", "lastNews: ")
         viewModel.getRecentPosts(10)
-    }
+    }*/
 }
