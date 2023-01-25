@@ -1,5 +1,6 @@
 package com.redgunner.droidsoft.view.fragment
 
+import android.content.SharedPreferences
 import android.util.Log
 import android.graphics.Bitmap
 import android.os.Bundle
@@ -94,15 +95,33 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         })
 
+        var mPreferences = activity?.getSharedPreferences("THEME", 0)
+        var themeBool = mPreferences?.getBoolean("themeBool", true)
+        if (themeBool == true) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+        else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
+
         val switchThm = view.findViewById<ImageButton>(R.id.themeSwitch)
         switchThm.setOnClickListener {
             if (AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-
+                themeBool= themeBool?.not()
             }
             else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                themeBool = themeBool?.not()
+            }
+            mPreferences = activity?.getSharedPreferences("THEME", 0)
+            val mEditor = mPreferences?.edit()
 
+            if(themeBool == true) {
+                mEditor?.putBoolean("themeBool", true)?.commit()
+            }
+            else if (themeBool == false) {
+                mEditor?.putBoolean("themeBool", false)?.commit()
             }
         }
 
