@@ -35,17 +35,17 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
 
     val posts = currentCategoryPosition.switchMap { categoryId ->
 
-        if (categoryId == -1) {
+        if (categoryId == 0) {
             wordPressRepository.getRecentPosts(10)
                 .cachedIn(viewModelScope)
         } else {
 
             if (categories.value.isNotEmpty()) {
-                wordPressRepository.getPostByCategory(categories.value[categoryId].id)
+                wordPressRepository.getPostByCategory(categories.value[categoryId - 1].id)
                     .cachedIn(viewModelScope)
 
             } else {
-                wordPressRepository.getPostByCategory(categoryId).cachedIn(viewModelScope)
+                wordPressRepository.getPostByCategory(categoryId - 1).cachedIn(viewModelScope)
 
             }
         }
@@ -70,7 +70,6 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
 
             try {
                 val filteredCategories = wordPressRepository.getCategories().filter { it.name.contains("Tests Android")
-                                                                                    || it.name.contains("Actualité")
                                                                                     || it.name.contains("Dossier") }
                 _categoryList.value = filteredCategories
 
@@ -111,11 +110,11 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
 
     }
 
-    fun getRecentPosts(nb: Int) {
+    /*fun getRecentPosts(nb: Int) {
         /*wordPressRepository.getRecentPosts(nb)
             .cachedIn(viewModelScope)*/
         currentCategoryPosition.value = -1
-    }
+    }*/
 
     fun getPostByCategory(categoryPosition: Int) {
 
