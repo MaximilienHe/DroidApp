@@ -128,10 +128,10 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
         viewModelScope.launch {
 
             try {
-
+                Log.d("SharedViewModel", "getPostComments: ${wordPressRepository.getPostComments(postId = postId)}")
                 _commentEventChannel.send(wordPressRepository.getPostComments(postId))
             } catch (e: Exception) {
-
+                Log.d("SharedViewModel", "getPostComments: ${e.message}")
 
             }
         }
