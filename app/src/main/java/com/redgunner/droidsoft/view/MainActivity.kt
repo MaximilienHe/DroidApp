@@ -7,6 +7,7 @@ import android.os.Handler
 import android.view.View
 import android.widget.LinearLayout
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.redgunner.droidsoft.R
 import com.redgunner.droidsoft.viewmodel.SharedViewModel
@@ -32,5 +33,6 @@ class MainActivity : AppCompatActivity() {
             ll.setVisibility(View.VISIBLE)
         }, 3000)
         */
+
     }
 }
