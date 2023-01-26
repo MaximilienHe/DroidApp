@@ -41,6 +41,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     }
 
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -122,16 +123,16 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
         }
 
+
         val switchSearch = view.findViewById<ImageButton>(R.id.searchButton)
-        val searchBar = view.findViewById<SearchView>(R.id.searchBar)
-        var searchBool = searchBar.isVisible
+        var searchBool = false
+        val navController = findNavController()
         switchSearch.setOnClickListener{
             if (!searchBool) {
-                searchBar.visibility = View.VISIBLE
                 searchBool = true
+                findNavController().navigate((MainFragmentDirections.actionGlobalSearchFragment()))
             }
             else {
-                searchBar.visibility = View.GONE
                 searchBool = false
             }
         }

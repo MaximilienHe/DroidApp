@@ -34,7 +34,6 @@
             android:name="postId"
             app:argType="integer" />
     </fragment>
-
     <action
         android:id="@+id/action_global_searchFragment"
         app:destination="@id/searchFragment" />
@@ -45,9 +44,11 @@
         tools:layout="@layout/fragment_search">
         <argument
             android:name="postId"
-            app:argType="integer" />
+            app:argType="integer"
+            android:defaultValue="1"/>
         <action
             android:id ="@+id/action_global_searchFragment_to_detailFragment"
             app:destination="@id/detailFragment"/>
     </fragment>
+
 </navigation>
