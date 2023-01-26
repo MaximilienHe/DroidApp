@@ -26,6 +26,7 @@ import android.graphics.Color
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import android.widget.ImageButton
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatDelegate
 
 class MainFragment : Fragment(R.layout.fragment_main) {
@@ -118,6 +119,20 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
             else if (themeBool == false) {
                 mEditor?.putBoolean("themeBool", false)?.commit()
+            }
+        }
+
+        val switchSearch = view.findViewById<ImageButton>(R.id.searchButton)
+        val searchBar = view.findViewById<SearchView>(R.id.searchBar)
+        var searchBool = searchBar.isVisible
+        switchSearch.setOnClickListener{
+            if (!searchBool) {
+                searchBar.visibility = View.VISIBLE
+                searchBool = true
+            }
+            else {
+                searchBar.visibility = View.GONE
+                searchBool = false
             }
         }
 
