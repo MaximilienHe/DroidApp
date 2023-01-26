@@ -1,5 +1,6 @@
 package com.redgunner.droidsoft.view.fragment
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.util.Log
 import android.os.Bundle
@@ -81,7 +82,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
                         }
                     }
-
                 }
         }
 
@@ -136,6 +136,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
         }
 
+
+
         lifecycleScope.launchWhenStarted {
 
 
@@ -155,13 +157,15 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         //val droidsoftTextView = view.findViewById<TextView>(R.id.droidsoftText)
         //droidsoftTextView.setOnClickListener { lastNews(view) }
-
     }
 
     override fun onStart() {
         super.onStart()
 
         tabLayout.setScrollPosition(viewModel.tabLayoutPosition, 0f, false)
+
+
+
 
     }
 
