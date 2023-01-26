@@ -1,5 +1,6 @@
 package com.redgunner.droidsoft.view.fragment
 
+import android.content.Intent
 import android.content.SharedPreferences
 import android.util.Log
 import android.os.Bundle
@@ -26,6 +27,7 @@ import android.graphics.Color
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
 import android.widget.ImageButton
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatDelegate
 
 class MainFragment : Fragment(R.layout.fragment_main) {
@@ -80,7 +82,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
                         }
                     }
-
                 }
         }
 
@@ -121,6 +122,22 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             }
         }
 
+        val switchSearch = view.findViewById<ImageButton>(R.id.searchButton)
+        val searchBar = view.findViewById<SearchView>(R.id.searchBar)
+        var searchBool = searchBar.isVisible
+        switchSearch.setOnClickListener{
+            if (!searchBool) {
+                searchBar.visibility = View.VISIBLE
+                searchBool = true
+            }
+            else {
+                searchBar.visibility = View.GONE
+                searchBool = false
+            }
+        }
+
+
+
         lifecycleScope.launchWhenStarted {
 
 
@@ -140,13 +157,15 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         //val droidsoftTextView = view.findViewById<TextView>(R.id.droidsoftText)
         //droidsoftTextView.setOnClickListener { lastNews(view) }
-
     }
 
     override fun onStart() {
         super.onStart()
 
         tabLayout.setScrollPosition(viewModel.tabLayoutPosition, 0f, false)
+
+
+
 
     }
 
