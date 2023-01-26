@@ -46,9 +46,10 @@
                 android:layout_gravity="end"
                 android:layout_marginEnd="18dp"
                 android:background="@color/NavBarColor"
-                android:src="@drawable/ic_moon"
-
-                app:tint="@color/textColor" />
+                android:src="@drawable/ic_new_moon"
+                android:paddingStart="18dp"
+                app:tint="@color/textColor"
+                />
 
             <ImageButton
                 android:id="@+id/search_button"
