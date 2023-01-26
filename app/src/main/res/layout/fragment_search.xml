@@ -8,22 +8,40 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity">
-
-
-        <SearchView
-            android:id="@+id/searchBar"
+        <LinearLayout
+            android:id="@+id/searchBarLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:iconifiedByDefault="false"
-            android:padding="4dp"
-            android:queryHint="Search Programming language" />
+            android:background="@color/StatusBarColor">
+
+            <ImageButton
+                android:id="@+id/searchBack"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_arrow_back"
+                android:background="@color/StatusBarColor"
+                android:paddingStart="18dp"
+
+                />
+
+            <SearchView
+                android:id="@+id/searchBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:iconifiedByDefault="false"
+                android:padding="4dp"
+                android:paddingStart="0dp"
+                android:paddingEnd="8dp"
+                android:queryHint="Entrez votre recherche" />
+        </LinearLayout>
 
         <ListView
             android:id="@+id/pre_result"
             android:layout_width="match_parent"
             android:layout_height="fill_parent"
-            android:layout_below="@id/searchBar" />
+            android:layout_below="@id/searchBarLayout"
+            android:background="@color/StatusBarColor"/>
 
     </RelativeLayout>
 

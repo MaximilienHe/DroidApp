@@ -126,7 +126,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
         val switchSearch = view.findViewById<ImageButton>(R.id.searchButton)
         var searchBool = false
-        val navController = findNavController()
         switchSearch.setOnClickListener{
             if (!searchBool) {
                 searchBool = true
