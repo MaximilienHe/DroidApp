@@ -140,6 +140,17 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
 
     }
 
+    fun getSearchResult(keyWord: String) {
+        viewModelScope.launch {
+            try {
+                wordPressRepository.getSearchResult(keyWord = keyWord)
+            } catch (e: Exception) {
+                Log.d("SharedViewModel", "GetSearchResult: ${e.message}")
+            }
+
+        }
+    }
+
 
     fun saveTabLayoutPosition(position: Int) {
         tabLayoutPosition = position

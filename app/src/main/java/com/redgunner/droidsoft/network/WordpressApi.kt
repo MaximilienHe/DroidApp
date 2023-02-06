@@ -45,4 +45,10 @@ interface WordpressApi {
         @Query("post") postId: Int
     ): List<Comments>
 
+
+    @GET("/wp-json/wp/v2/search/{keyWord}")
+    suspend fun getSearchResult(
+        @Query("keyWord") keyWord: String
+    ): List<Post>
+
 }
