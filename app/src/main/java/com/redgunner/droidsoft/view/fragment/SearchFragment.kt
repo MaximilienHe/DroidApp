@@ -18,7 +18,7 @@ import java.util.Arrays
 import android.widget.Toast
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
-
+    private val viewModel: SharedViewModel by activityViewModels()
 
     private lateinit var searchView: SearchView
     private lateinit var listView: ListView
@@ -35,7 +35,8 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         list.add("Samsung")
         list.add("Huawei")
         list.add("One plus")
-        list.add("la grosse daronne à maximilien cte chienne")
+        list.add("Xiaomi")
+        list.add("Oppo")
 
         adapter = ArrayAdapter<String>(
             requireContext(),
@@ -48,6 +49,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             override fun onQueryTextSubmit(query: String): Boolean {
                 if (list.contains(query)) {
                     adapter.filter.filter(query)
+                    viewModel.getSearchResult(query)
                 } else {
                     Toast.makeText(requireContext(), "No Match found", Toast.LENGTH_LONG).show()
                 }
