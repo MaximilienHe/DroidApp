@@ -11,56 +11,46 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+
         >
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/searchBarLayout"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="?attr/actionBarSize"
             android:background="@color/StatusBarColor"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            >
 
-            <ImageButton
-                android:id="@+id/searchBack"
-                android:layout_width="wrap_content"
-                android:layout_height="?attr/actionBarSize"
-                android:src="@drawable/ic_arrow_back"
-                android:background="@color/StatusBarColor"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/searchBar"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
 
-                />
+                <ImageButton
+                    android:id="@+id/searchBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="@color/StatusBarColor"
+                    android:minWidth="32dp"
+                    android:src="@drawable/ic_arrow_back" />
 
-            <SearchView
-                android:id="@+id/searchBar"
-                android:layout_width="wrap_content"
-                android:layout_height="?attr/actionBarSize"
-                android:iconifiedByDefault="false"
-                android:queryHint="Entrez votre recherche"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@+id/search_button"
-                app:layout_constraintStart_toEndOf="@+id/searchBack"
-                app:layout_constraintTop_toTopOf="parent" />
+                <SearchView
+                    android:id="@+id/searchBar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:iconifiedByDefault="false"
+                    android:queryHint="Entrez votre recherche"
+                    android:layout_toEndOf="@id/searchBack"
+                    app:actionViewClass="android.widget.SearchView"
+                    />
 
-            <ImageButton
-                android:id="@+id/searchButtoon"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/ic_search"
-                android:background="@color/StatusBarColor"
-                app:layout_constraintStart_toEndOf="@+id/searchBar"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-
-                />
+                <ImageButton
+                    android:id="@+id/searchButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?attr/actionBarSize"
+                    android:src="@drawable/ic_search"
+                    android:background="@color/StatusBarColor"
+                    android:layout_toEndOf="@id/searchBar"
+                    />
+            </RelativeLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
         <ListView
@@ -68,10 +58,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/StatusBarColor"
-            app:layout_constraintStart_toEndOf="@+id/searchBarLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/searchBarLayout"
-            app:layout_constraintBottom_toBottomOf="parent"
+
             />
     </LinearLayout>
 
