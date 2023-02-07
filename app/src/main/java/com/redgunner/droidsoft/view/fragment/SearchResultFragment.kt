@@ -30,5 +30,9 @@ class SearchResultFragment: Fragment(R.layout.fragment_search_result) {
         super.onViewCreated(view, savedInstanceState)
 
 
+
+        searchBack.setOnClickListener(){
+            findNavController().popBackStack()
+        }
     }
 }
