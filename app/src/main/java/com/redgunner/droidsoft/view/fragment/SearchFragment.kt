@@ -2,6 +2,7 @@ package com.redgunner.droidsoft.view.fragment
 
 import android.os.Bundle
 import android.text.Html
+import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.ListAdapter
@@ -12,6 +13,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.redgunner.droidsoft.R
 import com.redgunner.droidsoft.viewmodel.SharedViewModel
+import com.redgunner.droidsoft.models.post.Post
 import kotlinx.android.synthetic.main.fragment_search.*
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Arrays
@@ -25,11 +27,14 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private lateinit var list: ArrayList<String>
     private lateinit var adapter: ArrayAdapter<*>
 
+    private lateinit var postResult: List<Post>
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         searchView = searchBar
         listView = pre_result
+
 
         list = ArrayList()
         list.add("Samsung")
@@ -47,9 +52,11 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
+                var temp = viewModel.getSearchResult(query)
+                Log.d("result", temp.toString())
                 if (list.contains(query)) {
                     adapter.filter.filter(query)
-                    viewModel.getSearchResult(query)
+
                 } else {
                     Toast.makeText(requireContext(), "No Match found", Toast.LENGTH_LONG).show()
                 }
@@ -61,5 +68,10 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                 return false
             }
         })
+
+        searchBack.setOnClickListener(){
+            findNavController().popBackStack()
+        }
+
     }
 }
