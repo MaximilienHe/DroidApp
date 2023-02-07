@@ -15,6 +15,13 @@ import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
+
+import android.widget.EditText
+
+
+
+
+
 class CommentsFragment : Fragment(R.layout.fragment_comments) {
 
     private val viewModel: SharedViewModel by activityViewModels()
@@ -62,6 +69,10 @@ class CommentsFragment : Fragment(R.layout.fragment_comments) {
             findNavController().popBackStack()
 
         }
+
+        addCommentButton.setOnClickListener() {
+            addComment()
+        }
     }
 
 
@@ -73,6 +84,22 @@ class CommentsFragment : Fragment(R.layout.fragment_comments) {
             this.adapter = commentAdapter
 
         }
+    }
+
+    private fun addComment() {
+        val nameField = view?.findViewById<EditText>(R.id.nameField)
+        val emailField = view?.findViewById<EditText>(R.id.emailField)
+        val messageField = view?.findViewById<EditText>(R.id.commentField)
+
+        val name = nameField?.text.toString()
+        val email = emailField?.text.toString()
+        val message = messageField?.text.toString()
+        val postId = navArgs.postId
+
+        viewModel.addComment(postId, name, email, message)
+
+        Log.d("TAG", "addComment: $name $email $message $postId")
+
     }
 
 

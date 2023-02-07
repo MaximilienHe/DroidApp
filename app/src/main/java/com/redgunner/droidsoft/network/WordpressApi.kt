@@ -4,8 +4,10 @@ import com.redgunner.droidsoft.models.category.Categories
 import com.redgunner.droidsoft.models.comments.Comments
 import com.redgunner.droidsoft.models.post.Post
 import retrofit2.http.GET
+import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Headers
 
 interface WordpressApi {
 
@@ -44,5 +46,14 @@ interface WordpressApi {
     suspend fun getPostComments(
         @Query("post") postId: Int
     ): List<Comments>
+
+    @Headers("Authorization:    ")
+    @POST("/wp-json/wp/v2/comments")
+    suspend fun postComment(
+        @Query("post") postId: Int,
+        @Query("author_name") authorName: String,
+        @Query("author_email") authorEmail: String,
+        @Query("content") content: String
+    ): Comments
 
 }

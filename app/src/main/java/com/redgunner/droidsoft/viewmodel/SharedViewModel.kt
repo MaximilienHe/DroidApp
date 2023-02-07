@@ -140,6 +140,17 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
 
     }
 
+    fun addComment(postId: Int, name: String, email: String, content: String) {
+        viewModelScope.launch {
+            try {
+                wordPressRepository.postComment(postId, name, email, content)
+            } catch (e: Exception) {
+                Log.d("SharedViewModel", "addComment: ${e.message}")
+
+            }
+        }
+    }
+
 
     fun saveTabLayoutPosition(position: Int) {
         tabLayoutPosition = position

@@ -48,4 +48,6 @@ class WordPressRepository @Inject constructor(private val wordpressApi: Wordpres
 
     suspend fun getPostComments(postId: Int) = wordpressApi.getPostComments(postId = postId)
 
+    suspend fun postComment(postId: Int, authorName: String, authorEmail: String, content: String) = wordpressApi.postComment(postId = postId, authorName = authorName, authorEmail = authorEmail, content = content)
+
 }
