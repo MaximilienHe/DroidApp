@@ -34,7 +34,7 @@
 
                 <SearchView
                     android:id="@+id/searchBar"
-                    android:layout_width="fill_parent"
+                    android:layout_width="325dp"
                     android:layout_height="?attr/actionBarSize"
                     android:iconifiedByDefault="false"
                     android:queryHint="Entrez votre recherche"

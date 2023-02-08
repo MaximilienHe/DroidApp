@@ -69,6 +69,12 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             }
         })
 
+        searchButton.setOnClickListener() {
+            findNavController().navigate(
+                SearchFragmentDirections.actionGlobalSearchFragmentToSearchResultFragment()
+            )
+        }
+
         searchBack.setOnClickListener(){
             findNavController().popBackStack()
         }
