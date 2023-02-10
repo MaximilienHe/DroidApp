@@ -30,6 +30,7 @@ import android.widget.ImageButton
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatDelegate
 
+
 class MainFragment : Fragment(R.layout.fragment_main) {
 
     private val viewModel: SharedViewModel by activityViewModels()
@@ -125,15 +126,8 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
 
         val switchSearch = view.findViewById<ImageButton>(R.id.searchButton)
-        var searchBool = false
         switchSearch.setOnClickListener{
-            if (!searchBool) {
-                searchBool = true
-                findNavController().navigate((MainFragmentDirections.actionGlobalSearchFragment()))
-            }
-            else {
-                searchBool = false
-            }
+            findNavController().navigate((MainFragmentDirections.actionGlobalSearchFragment()))
         }
 
 
@@ -163,10 +157,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onStart()
 
         tabLayout.setScrollPosition(viewModel.tabLayoutPosition, 0f, false)
-
-
-
-
     }
 
 

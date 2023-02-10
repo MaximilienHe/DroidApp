@@ -1,11 +1,9 @@
 package com.redgunner.droidsoft.view.fragment
 
 import android.os.Bundle
-import android.text.Html
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
-import android.widget.ListAdapter
 import android.widget.ListView
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -13,10 +11,8 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.redgunner.droidsoft.R
 import com.redgunner.droidsoft.viewmodel.SharedViewModel
-import com.redgunner.droidsoft.models.post.Post
 import kotlinx.android.synthetic.main.fragment_search.*
-import androidx.appcompat.app.AppCompatActivity
-import java.util.Arrays
+import android.widget.ImageButton
 import android.widget.Toast
 
 class SearchFragment : Fragment(R.layout.fragment_search) {
@@ -26,15 +22,17 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     private lateinit var listView: ListView
     private lateinit var list: ArrayList<String>
     private lateinit var adapter: ArrayAdapter<*>
-
-    private lateinit var postResult: List<Post>
+    //private lateinit var postResult: List<Post>
+    private lateinit var  searchBtn: ImageButton
+    private lateinit var queryStr: String
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         searchView = searchBar
         listView = pre_result
-
+        searchBtn = view.findViewById(R.id.searchButton)
+        queryStr= ""
 
         list = ArrayList()
         list.add("Samsung")
@@ -52,8 +50,9 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
 
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String): Boolean {
-                var temp = viewModel.getSearchResult(query)
-                Log.d("result", temp.toString())
+                //var temp = viewModel.getSearchResult(query)
+                //Log.d("result", temp.toString())
+                queryStr = query
                 if (list.contains(query)) {
                     adapter.filter.filter(query)
 
@@ -69,9 +68,10 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
             }
         })
 
-        searchButton.setOnClickListener() {
+
+        searchBtn.setOnClickListener() {
             findNavController().navigate(
-                SearchFragmentDirections.actionGlobalSearchFragmentToSearchResultFragment()
+                SearchFragmentDirections.actionGlobalSearchFragmentToSearchResultFragment(queryStr)
             )
         }
 

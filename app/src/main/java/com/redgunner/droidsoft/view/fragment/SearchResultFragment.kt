@@ -18,21 +18,90 @@ import kotlinx.android.synthetic.main.fragment_search.*
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Arrays
 import android.widget.Toast
+import com.facebook.shimmer.ShimmerFrameLayout
+import androidx.core.view.isVisible
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.navArgs
+import androidx.paging.LoadState
+import com.redgunner.droidsoft.adapter.PostListAdapter
+import com.redgunner.droidsoft.adapter.PostLoadStateAdapter
+import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_search_result.*
+import kotlinx.android.synthetic.main.fragment_search_result.HomePostList2
+import kotlinx.android.synthetic.main.fragment_search_result.list_shimmer_view_container2
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 class SearchResultFragment: Fragment(R.layout.fragment_search_result) {
     private val viewModel: SharedViewModel by activityViewModels()
-
-    private val shimmer = list_shimmer_view_container
-    private val postList = HomePostList
+    private val shimmer = list_shimmer_view_container2
+    private val postList = HomePostList2
+    private val navArgs: SearchResultFragmentArgs by navArgs()
+    private val postAdapter = PostListAdapter { postId ->
+        findNavController().navigate(SearchResultFragmentDirections.actionGlobalSearchResultFragmentToDetailFragment(postId))
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setUpRecyclerView()
+
+        shimmer.startShimmer()
+
+        lifecycleScope.launch {
+            postAdapter.loadStateFlow.map {
+                it.refresh
+            }
+                .distinctUntilChanged()
+                .collect { LoadState ->
+                    when (LoadState) {
+                        is LoadState.Loading -> {
+                            postList.isVisible = false
+                            shimmer.isVisible = true
+                            shimmer.startShimmer()
+                        }
+                        is LoadState.NotLoading -> {
+                            shimmer.stopShimmer()
+                            shimmer.isVisible = false
+                            postList.isVisible = true
+                        }
+                        is LoadState.Error -> {
+                            Log.d("SearchResultLoadError", "error loading")
+
+                        }
+                    }
+                }
+        }
 
 
+        viewModel.posts.observe(viewLifecycleOwner, { pagingData ->
+            postAdapter.submitData(lifecycle = lifecycle, pagingData = pagingData)
+        })
+
+        lifecycleScope.launchWhenStarted {
+
+
+            viewModel.categories.collect { categories ->
+                if (categories.isNotEmpty()) {
+                    shimmer.stopShimmer()
+                    shimmer.isVisible = false
+                }
+            }
+        }
         searchBack.setOnClickListener(){
             findNavController().popBackStack()
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getSearchResult(navArgs.keyWord)
+    }
+    private fun setUpRecyclerView() {
+        HomePostList.apply {
+            this.adapter = postAdapter.withLoadStateFooter(PostLoadStateAdapter())
         }
     }
 }

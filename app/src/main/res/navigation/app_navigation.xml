@@ -55,7 +55,9 @@
         <action
             android:id="@+id/action_global_searchResultFragment_to_detailFragment"
             app:destination="@id/detailFragment"/>
-
+        <argument
+            android:name="keyWord"
+            app:argType="string"/>
     </fragment>
 
 </navigation>
