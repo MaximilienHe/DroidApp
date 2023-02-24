@@ -46,9 +46,11 @@ interface WordpressApi {
     ): List<Comments>
 
 
-    @GET("/wp-json/wp/v2/post?search={keyword}")
+    @GET("/wp-json/wp/v2/posts/?slug={title}")
     suspend fun getSearchResult(
-        @Query("keyWord") keyWord: String
+        //@Query("per_page") perPage: Int,
+        @Query("title") title: String,
+
     ): List<Post>
 
 }

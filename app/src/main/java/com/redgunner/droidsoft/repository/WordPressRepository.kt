@@ -2,6 +2,7 @@ package com.redgunner.droidsoft.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
+import androidx.paging.RemoteMediator
 import androidx.paging.liveData
 import com.redgunner.droidsoft.network.WordpressApi
 import com.redgunner.droidsoft.paging.PostPagingSource
@@ -48,6 +49,12 @@ class WordPressRepository @Inject constructor(private val wordpressApi: Wordpres
 
     suspend fun getPostComments(postId: Int) = wordpressApi.getPostComments(postId = postId)
 
-    suspend fun getSearchResult(keyWord: String) = wordpressApi.getSearchResult(keyWord = keyWord)
+    suspend fun getSearchResult(title: String) = wordpressApi.getSearchResult(title = title)
+
+
+
+
+
+        //wordpressApi.getSearchResult(keyWord = keyWord)
 
 }

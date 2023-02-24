@@ -32,7 +32,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         searchView = searchBar
         listView = pre_result
         searchBtn = view.findViewById(R.id.searchButton)
-        queryStr= ""
+        queryStr= "top-10-des-coques-pour-samsung-galaxy-s23"
 
         list = ArrayList()
         list.add("Samsung")

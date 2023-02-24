@@ -1,5 +1,7 @@
 package com.redgunner.droidsoft.view.fragment
 
+import android.content.res.ColorStateList
+import android.graphics.Color
 import android.os.Bundle
 import android.text.Html
 import android.util.Log
@@ -18,6 +20,7 @@ import kotlinx.android.synthetic.main.fragment_search.*
 import androidx.appcompat.app.AppCompatActivity
 import java.util.Arrays
 import android.widget.Toast
+import androidx.core.content.res.ResourcesCompat
 import com.facebook.shimmer.ShimmerFrameLayout
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
@@ -25,6 +28,7 @@ import androidx.navigation.fragment.navArgs
 import androidx.paging.LoadState
 import com.redgunner.droidsoft.adapter.PostListAdapter
 import com.redgunner.droidsoft.adapter.PostLoadStateAdapter
+import com.redgunner.droidsoft.models.category.Categories
 import kotlinx.android.synthetic.main.fragment_main.*
 import kotlinx.android.synthetic.main.fragment_search_result.*
 import kotlinx.android.synthetic.main.fragment_search_result.HomePostList2
@@ -80,16 +84,7 @@ class SearchResultFragment: Fragment(R.layout.fragment_search_result) {
             postAdapter.submitData(lifecycle = lifecycle, pagingData = pagingData)
         })
 
-        lifecycleScope.launchWhenStarted {
 
-
-            viewModel.categories.collect { categories ->
-                if (categories.isNotEmpty()) {
-                    shimmer.stopShimmer()
-                    shimmer.isVisible = false
-                }
-            }
-        }
         searchBack.setOnClickListener(){
             findNavController().popBackStack()
         }
@@ -97,11 +92,14 @@ class SearchResultFragment: Fragment(R.layout.fragment_search_result) {
 
     override fun onResume() {
         super.onResume()
-        viewModel.getSearchResult(navArgs.keyWord)
+        postList.scrollToPosition(0)
+        viewModel.getSearchResult(navArgs!!.title)
     }
     private fun setUpRecyclerView() {
-        HomePostList.apply {
+        postList.apply {
             this.adapter = postAdapter.withLoadStateFooter(PostLoadStateAdapter())
         }
     }
+
+
 }

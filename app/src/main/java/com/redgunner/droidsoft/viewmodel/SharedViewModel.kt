@@ -140,10 +140,10 @@ class SharedViewModel @Inject constructor(private val wordPressRepository: WordP
 
     }
 
-    fun getSearchResult(keyWord: String) {
+    fun getSearchResult(title: String) {
         viewModelScope.launch {
             try {
-                wordPressRepository.getSearchResult(keyWord = keyWord)
+                wordPressRepository.getSearchResult(title = title)
             } catch (e: Exception) {
                 Log.d("SharedViewModel", "GetSearchResult: ${e.message}")
             }
