@@ -34,7 +34,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
     override fun onStart() {
         super.onStart()
         setUpWebView()
-        viewModel.getPostById(navArgs.PostId)
+        viewModel.getPostById(navArgs.postId)
 
 
 
@@ -43,7 +43,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
                 when (postState) {
 
                     is PostState.Empty -> {
-                        viewModel.getPostById(navArgs.PostId)
+                        viewModel.getPostById(navArgs.postId)
 
                     }
 
@@ -86,7 +86,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
         buttonShowComments.setOnClickListener {
             findNavController().navigate(
                 DetailFragmentDirections.actionDetailFragmentToCommentsFragment(
-                    navArgs.PostId
+                    navArgs.postId
                 )
             )
         }
