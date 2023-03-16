@@ -15,9 +15,8 @@
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail">
         <argument
-            android:name="PostId"
-            app:argType="integer"
-            android:defaultValue="0" />
+            android:name="postId"
+            app:argType="integer" />
         <action
             android:id="@+id/action_detailFragment_to_commentsFragment"
             app:destination="@id/commentsFragment" />

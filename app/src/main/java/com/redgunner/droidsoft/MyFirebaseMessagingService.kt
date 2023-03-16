@@ -29,7 +29,7 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
 
         remoteView.setTextViewText(R.id.title, title)
         remoteView.setTextViewText(R.id.message, message)
-        remoteView.setImageViewResource(R.id.app_logo, R.mipmap.full_image_logo)
+        remoteView.setImageViewResource(R.id.app_logo, R.mipmap.full_image_logo_round)
 
         return remoteView
     }
@@ -41,11 +41,15 @@ class MyFirebaseMessagingService : FirebaseMessagingService() {
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT)
 
         var builder: NotificationCompat.Builder = NotificationCompat.Builder(applicationContext, channelId)
-            .setSmallIcon(R.mipmap.full_image_logo)
+            .setSmallIcon(R.mipmap.full_image_logo_round)
             .setAutoCancel(true)
             .setContentIntent(pendingIntent)
 //            .setVibrate(longArrayOf(1000, 1000, 1000, 1000, 1000))
             .setOnlyAlertOnce(true)
+        //set notification color to match your app color template
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = builder.setColor("#13603a".toInt(16))
+        }
 
         builder = builder.setContent(getRemoteView(title, message))
 
