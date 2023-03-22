@@ -16,6 +16,8 @@ import androidx.navigation.fragment.navArgs
 import androidx.webkit.WebSettingsCompat
 import androidx.webkit.WebViewFeature
 import com.bumptech.glide.Glide
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 import com.redgunner.droidsoft.R
 import com.redgunner.droidsoft.models.post.Post
 import com.redgunner.droidsoft.state.PostState
@@ -29,7 +31,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
     private val viewModel: SharedViewModel by activityViewModels()
     private val navArgs: DetailFragmentArgs by navArgs()
-
+    private val firebaseAnalytics = Firebase.analytics
 
     override fun onStart() {
         super.onStart()
@@ -73,7 +75,7 @@ class DetailFragment : Fragment(R.layout.fragment_detail) {
 
             }
         }
-
+        firebaseAnalytics.logEvent("Article_consulté",null)
 
     }
 
