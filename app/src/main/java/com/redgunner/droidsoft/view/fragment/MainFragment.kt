@@ -29,8 +29,13 @@ import androidx.core.content.res.ResourcesCompat
 import android.widget.ImageButton
 import android.widget.SearchView
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+import com.google.firebase.analytics.ktx.analytics
+import com.google.firebase.ktx.Firebase
 
 class MainFragment : Fragment(R.layout.fragment_main) {
+
+
 
     private val viewModel: SharedViewModel by activityViewModels()
     private val postAdapter = PostListAdapter { postId ->
@@ -135,6 +140,21 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 searchBool = false
             }
         }
+
+        val swipeRefreshLayout = view.findViewById<SwipeRefreshLayout>(R.id.swipeRefreshLayout)
+
+        // Définissez l'écouteur de rafraîchissement
+        swipeRefreshLayout.setOnRefreshListener {
+            // Code pour rafraîchir le fragment ici
+            // Obtenez une référence à la vue racine du fragment
+            val rootView = view?.rootView
+
+// Rafraîchir la vue en appelant la méthode invalidate ()
+            rootView?.invalidate()
+            // Terminer le rafraîchissement
+            swipeRefreshLayout.isRefreshing = false
+        }
+
 
 
 
