@@ -10,7 +10,7 @@ import retrofit2.http.Query
 interface WordpressApi {
 
     companion object {
-        const val BASE_URL = "https://droidsoft.fr/"
+        const val BASE_URL = "https://devdroid.geekmedia.fr/"
 
 
     }

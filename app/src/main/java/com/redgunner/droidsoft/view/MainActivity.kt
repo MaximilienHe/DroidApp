@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         }, 3000)
         */
 
-        val restApiKey = "6977994q54_pq39qr.s2n61q236499n23o0.870695s959891o9104o8qnn4224q"
+        val restApiKey = "86q5824pq5.74sq6r5_r8595594on812q542o54oo_4qr0rr4p2716r9rq3399716346o8s85n"
         val deviceUuid = Settings.Secure.getString(getContentResolver(), Settings.Secure.ANDROID_ID);
         System.out.println("Device UUID : $deviceUuid")
         var deviceToken = "test"
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
 
         CoroutineScope(Dispatchers.IO).launch {
-            val url = URL("https://test.lucas-chalmandrier.fr/wp-json/fcm/pn/subscribe")
+            val url = URL("https://droidsoft.fr/wp-json/fcm/pn/subscribe")
 
             val connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "POST"

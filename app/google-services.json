@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "757072444946",
-    "project_id": "droidsoftapp",
-    "storage_bucket": "droidsoftapp.appspot.com"
+    "project_number": "119825563868",
+    "project_id": "droidsoft-app",
+    "storage_bucket": "droidsoft-app.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:757072444946:android:bba0a1ca7e3a24fa0522cb",
+        "mobilesdk_app_id": "1:119825563868:android:5995cc6b5761e2e895f419",
         "android_client_info": {
           "package_name": "com.redgunner.droidsoft"
         }
       },
       "oauth_client": [
         {
-          "client_id": "757072444946-5sbb9kvunn1mus1le14pjsc7e488e9bk.apps.googleusercontent.com",
+          "client_id": "119825563868-6tia684ajsuh4nrnjj5j7chjnabap60i.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCXBvZKsOFkvH50MgSF93yyhHjOehSVFno"
+          "current_key": "AIzaSyDuvdl90VThnHrtw0_hGJuUAnqgzwhoXsw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "757072444946-5sbb9kvunn1mus1le14pjsc7e488e9bk.apps.googleusercontent.com",
+              "client_id": "119825563868-6tia684ajsuh4nrnjj5j7chjnabap60i.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
